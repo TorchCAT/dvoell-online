@@ -1,5 +1,7 @@
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
+const url = require('url');
 
 const options = {
   key: fs.readFileSync('private_key.pem'),
@@ -19,7 +21,10 @@ https.createServer(options, function (req, res) {
     res.end("STOP!")
   }
 }).listen(443);
-https.createServer(options, function (req, res) {
-  res.writeHead(302, {'Location': 'https://dvoell.online' + req.url});
-  res.end(); 
+
+http.createServer(function (req, res) {
+  const baseURL = 'https://' + req.headers.host + '/';
+  const reqUrl = new URL(req.url, baseURL);
+  res.writeHead(302, {'Location': reqUrl});
+  res.end();
 }).listen(80);
