@@ -23,4 +23,6 @@ jobs:
           REMOTE_USER: lap-manul
           TARGET: '/home/lap-manul/deploy/'
           EXCLUDE: ".git/, /node_modules/"
+      - name: restart server
+        run: sudo killall nodemon; sudo nodemon /home/lap-manul/deploy/app.js &
       - run: echo "🍏 This job's status is ${{ job.status }}."
