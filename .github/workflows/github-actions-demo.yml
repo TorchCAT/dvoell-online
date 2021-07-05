@@ -13,4 +13,14 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: ls -a ${{ github.workspace }}
+      - name: Deploy to Staging server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: -avzr #"-rltgoDzvO"
+          SOURCE: "."
+          REMOTE_HOST: dvoell.online
+          REMOTE_USER: lap-manul
+          TARGET: '/home/lap-manul/https/'
+          EXCLUDE: "/dist/, /node_modules/"
       - run: echo "🍏 This job's status is ${{ job.status }}."
