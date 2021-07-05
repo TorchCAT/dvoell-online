@@ -23,19 +23,19 @@ jobs:
           REMOTE_USER: lap-manul
           TARGET: '/home/lap-manul/deploy/'
           EXCLUDE: ".git/, /node_modules/"
-      - name: restart server
-        run: |
-          sudo cat <<EOT > /lib/systemd/system/dvoell-online.service
-          [Unit]
-          Description=dvoell.online service
-          [Service]
-          Type=simple
-          WorkingDirectory=/home/lap-manul/deploy
-          ExecStart=/usr/local/bin/nodemon app.js
-          [Install]
-          WantedBy=multi-user.target
-          EOT
-          sudo systemctl daemon-reload
-          sudo systemctl enable dvoell-online
-          sudo systemctl start dvoell-online
+      # - name: restart server
+      #   run: |
+      #     sudo cat <<EOT > /lib/systemd/system/dvoell-online.service
+      #     [Unit]
+      #     Description=dvoell.online service
+      #     [Service]
+      #     Type=simple
+      #     WorkingDirectory=/home/lap-manul/deploy
+      #     ExecStart=/usr/local/bin/nodemon app.js
+      #     [Install]
+      #     WantedBy=multi-user.target
+      #     EOT
+      #     sudo systemctl daemon-reload
+      #     sudo systemctl enable dvoell-online
+      #     sudo systemctl start dvoell-online
       - run: echo "🍏 This job's status is ${{ job.status }}."
