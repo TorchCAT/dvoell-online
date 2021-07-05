@@ -22,5 +22,5 @@ jobs:
           REMOTE_HOST: dvoell.online
           REMOTE_USER: lap-manul
           TARGET: '/home/lap-manul/https/'
-          EXCLUDE: "/dist/, /node_modules/"
+          EXCLUDE: ".git/, /node_modules/"
       - run: echo "🍏 This job's status is ${{ job.status }}."
