@@ -19,5 +19,3 @@ https.createServer(options, function (req, res) {
     res.end("STOP!")
   }
 }).listen(443);
-// https://stackoverflow.com/questions/2924330/how-can-i-rate-limit-how-fast-a-javascript-function-allows-itself-to-be-called
-
